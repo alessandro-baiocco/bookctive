@@ -10,12 +10,20 @@ class AllTheBooks extends Component {
     return (
       <>
         <Container>
+          {this.state.selectedBook ? (
+            <Container>
+              <h3>{this.state.selectedBook[0]}</h3>
+              <p>{this.state.selectedBook[1]}</p>
+            </Container>
+          ) : (
+            <></>
+          )}
           <Row className="g-2">
             {libri.map((libro, index) => (
               <Card
                 key={`book-${index}`}
                 className="col-4"
-                onClick={() => this.state({ selectedBook: [libro.title, libro.price] })}
+                onClick={() => this.setState({ selectedBook: [libro.title, libro.price] })}
               >
                 <img src={libro.img} className="card-img-top" alt={libro.title} />
                 <div className="card-body">
@@ -30,15 +38,6 @@ class AllTheBooks extends Component {
             ))}
           </Row>
         </Container>
-        <Offcanvas variant="end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-          <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasRightLabel">
-              Offcanvas right
-            </h5>
-            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div className="offcanvas-body">...</div>
-        </Offcanvas>
       </>
     );
   }
