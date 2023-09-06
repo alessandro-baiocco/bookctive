@@ -23,10 +23,10 @@ class AllTheBooks extends Component {
             {libri.map((libro, index) => (
               <Card
                 key={`book-${index}`}
-                className="col-xl-3 col-md-4 col-6"
+                className="col-xl-3 col-md-4 col-6 "
                 onClick={() => this.setState({ selectedBook: [libro.title, libro.price, libro.img] })}
               >
-                <img src={libro.img} className="card-img-top" alt={libro.title} />
+                <img src={libro.img} className="card-img-top" alt={libro.title} style={{ objectFit: "contain" }} />
                 <div className="card-body">
                   <h5 className="card-title">{libro.title}</h5>
                 </div>
